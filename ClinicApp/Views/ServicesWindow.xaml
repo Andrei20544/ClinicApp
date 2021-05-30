@@ -1,18 +1,36 @@
-﻿<Window x:Class="ClinicApp.Views.PillsWindow"
+﻿<Window x:Class="ClinicApp.Views.ServicesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClinicApp.Views"
         mc:Ignorable="d"
-        Title="PillsWindow" 
+        Title="ServicesWindow" 
         Height="600" 
         Width="1280"
         WindowStyle="None" 
         ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" 
-        MouseDown="Window_MouseDown">
+        WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Window.Resources>
+
+        <Style x:Key="BachTextBlock" TargetType="{x:Type Label}" BasedOn="{x:Null}">
+
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="AliceBlue"/>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver" Value="true">
+
+                    <Setter Property="Foreground" Value="#FFB2B2B2"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
 
         <Style TargetType="TextBox">
 
@@ -37,14 +55,6 @@
 
         </Style>
 
-        <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockDataGrid">
-
-            <Setter Property="Foreground" Value="AliceBlue"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-
-        </Style>
-
         <Style TargetType="{x:Type Button}" x:Key="BTNDown" BasedOn="{StaticResource MainBtn}">
 
             <Setter Property="Width" Value="130"/>
@@ -54,37 +64,6 @@
 
         </Style>
 
-        <Style TargetType="{x:Type DataGridRow}" x:Key="DataGridStyle">
-
-            <Setter Property="Foreground" Value="#FFB3B3B3"/>
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Setter Property="Template" Value="{DynamicResource DataGridRowControlTemplate1}"/>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#FF262626"/>
-                </Trigger>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                    <Setter Property="Background" Value="#FF383838"/>
-                </Trigger>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="#FF333333"/>
-                </Trigger>
-            </Style.Triggers>
-
-        </Style>
-
-        <Style TargetType="{x:Type DataGridColumnHeader}">
-
-            <Setter Property="Background" Value="#FF394651"/>
-            <Setter Property="Foreground" Value="AliceBlue"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-
-        </Style>
-
-        <Style TargetType="ScrollBar">
-            <Setter Property="Background" Value="Red" />
-        </Style>
 
     </Window.Resources>
     <Grid>
@@ -99,10 +78,17 @@
         <Grid Grid.Row="0"
               Background="#FFAEAEAE">
 
-            <TextBlock Text="Препараты"
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+
+                <TextBlock Text="Клиенты"
                        Margin="10 0 0 0"
                        FontSize="25"
                        Foreground="#FF818181"/>
+
+
+
+            </StackPanel>
 
             <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
@@ -136,7 +122,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Список препаратов"
+                <TextBlock Text="Список клиентов"
                            VerticalAlignment="Center"
                            Margin="10 0 0 0"
                            FontSize="25"
@@ -153,45 +139,66 @@
                               FontSize="17"
                               Background="#FF333F49"
                               Foreground="#FF6C6C6C" 
-                              SelectionChanged="GridClient_SelectionChanged"
                               RowStyle="{StaticResource DataGridStyle}"
-                              HorizontalAlignment="Center"
+                              SelectionChanged="GridClient_SelectionChanged"
                               RowHeaderWidth="0">
 
                         <DataGrid.Columns>
 
                             <DataGridTextColumn
                                         Binding="{Binding Path=name}"
-                                        Width="240">
-                                <DataGridTextColumn.Header>
-                                    <TextBlock Text="Название"
-                                               Style="{StaticResource TextBlockDataGrid}"/>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn
-                                        Binding="{Binding Path=price}"
                                         Width="160">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Цена"
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="Название"
                                                Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
                             <DataGridTextColumn
-                                        Binding="{Binding Path=manufacturer}"
-                                        Width="190">
+                                        Binding="{Binding Path=id_pills}"
+                                            Width="160">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Производитель"
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="ID препарата"
                                                Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Binding="{Binding Path=condition}"
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=limit_age}"
+                                        Width="160">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="Возрастное огр."
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=value}"
+                                Width="150">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="Функ. Значения"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding Path=description}"
                                                 Width="150">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Условие отпуска"
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="Описание"
                                                Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
@@ -235,25 +242,35 @@
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Цена"
+                            <TextBlock Text="ID препарата"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="priceText"/>
+                            <TextBox x:Name="idPillsText"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Производитель"
+                            <TextBlock Text="Возрастное огр."
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="manufacturerText"/>
+                            <TextBox x:Name="limitText"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Условие отпуска"
+                            <TextBlock Text="Функ. значения"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="conditionText"/>
+                            <TextBox x:Name="valueText"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0 10 0 0">
+                            <TextBlock Text="Описание"
+                                       Style="{StaticResource Text}"/>
+                            <TextBox x:Name="descriptionText"
+                                     TextWrapping="Wrap"
+                                     Height="150"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"

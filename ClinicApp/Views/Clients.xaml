@@ -13,6 +13,25 @@
         WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" >
     <Window.Resources>
 
+        <Style x:Key="BachTextBlock" TargetType="{x:Type Label}" BasedOn="{x:Null}">
+
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="AliceBlue"/>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver" Value="true">
+
+                    <Setter Property="Foreground" Value="#FFB2B2B2"/>
+
+                </Trigger>
+                
+            </Style.Triggers>
+
+        </Style>
+
         <Style TargetType="TextBox">
 
             <Setter Property="Width" Value="280"/>
@@ -45,11 +64,6 @@
 
         </Style>
 
-        <Style TargetType="DataGrid">
-            
-            
-            
-        </Style>
         
     </Window.Resources>
     <Grid>
@@ -64,10 +78,17 @@
         <Grid Grid.Row="0"
               Background="#FFAEAEAE">
 
-            <TextBlock Text="Clients"
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+
+                <TextBlock Text="Клиенты"
                        Margin="10 0 0 0"
                        FontSize="25"
                        Foreground="#FF818181"/>
+
+              
+
+            </StackPanel>
 
             <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
@@ -111,48 +132,131 @@
                       Margin="5">
 
                     <DataGrid BorderThickness="2"
-                          BorderBrush="Transparent"
-                          Name="GridClient"
-                          IsReadOnly="True"
-                          AutoGenerateColumns="False"
-                          FontSize="17"
-                          Background="White"
-                          Foreground="#FF6C6C6C" SelectionChanged="GridClient_SelectionChanged">
+                              BorderBrush="Transparent"
+                              Name="GridClient"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              FontSize="17"
+                              Background="#FF333F49"
+                              Foreground="#FF6C6C6C" 
+                              RowStyle="{StaticResource DataGridStyle}"
+                              SelectionChanged="GridClient_SelectionChanged"
+                              RowHeaderWidth="0">
 
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn Header="Имя клиента"
+                            <DataGridTextColumn
                                         Binding="{Binding Path=name}"
-                                        Width="160"/>
+                                        Width="160">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="Имя"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Фамилия клиента"
+                            <DataGridTextColumn
                                         Binding="{Binding Path=surname}"
-                                            Width="160"/>
+                                            Width="160">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="Фамилия"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Отчество клиента"
+                            <DataGridTextColumn
                                         Binding="{Binding Path=middle_name}"
-                                        Width="160"/>
+                                        Width="160">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="Отчество"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Дата рождения"
-                                        Binding="{Binding Path=birthday}"/>
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=birthday}"
+                                Width="150">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="Дата рождения"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Гендер"
-                                        Binding="{Binding Path=gender}"/>
+                            <DataGridTextColumn Binding="{Binding Path=gender}"
+                                                Width="150">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="Гендер"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Телефон"
-                                        Binding="{Binding Path=phone}"/>
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=phone}"
+                                        Width="150">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="Телефон"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="E-mail"
-                                        Binding="{Binding Path=email}"/>
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=email}"
+                                        Width="150">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="E-mail"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Тип полиса"
-                                        Binding="{Binding Path=type_policy}"/>
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=type_policy}"
+                                        Width="150">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="Тип полиса"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Номер полиса"
-                                        Binding="{Binding Path=policy_number}"/>
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=policy_number}"
+                                        Width="150">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="Номер полиса"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Паспортные данные"
-                                        Binding="{Binding Path=passport_data}"/>
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=passport_data}"
+                                        Width="190">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="190">
+                                        <TextBlock Text="Паспортные данные"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
                         </DataGrid.Columns>
 
@@ -323,7 +427,26 @@
         <Grid Grid.Row="2"
               Background="#FF1F1F1F">
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0"
+                        Grid.ColumnSpan="2">
+
+                <TextBlock Text="Поиск: "/>
+                <TextBox x:Name="search"
+                         Width="300"
+                         Background="#FF232323"
+                         BorderBrush="#FF3C3C3C" 
+                         TextChanged="search_TextChanged"/>
+
+            </StackPanel>
 
         </Grid>
         <!--footer-->

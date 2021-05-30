@@ -199,5 +199,25 @@ namespace ClinicApp.Views
             policyNumText.Text = "";
             passDataText.Text = "";
         }
+
+        private void search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                List<Client> items = new List<Client>();
+                foreach (Client item in clients)
+                {
+                    if (item.name.Contains(search.Text) || item.middle_name.Contains(search.Text) || item.gender.Contains(search.Text))
+                    {
+                        items.Add(item);
+                    }
+                }
+                GridClient.ItemsSource = items;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

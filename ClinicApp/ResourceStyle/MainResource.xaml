@@ -112,4 +112,53 @@
 
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockDataGrid">
+
+        <Setter Property="Foreground" Value="AliceBlue"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+
+    </Style>
+
+    <Style TargetType="{x:Type DataGridRow}" x:Key="DataGridStyle">
+
+        <Setter Property="Foreground" Value="#FFB3B3B3"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template" Value="{DynamicResource DataGridRowControlTemplate1}"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF262626"/>
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                <Setter Property="Background" Value="#FF383838"/>
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                <Setter Property="Background" Value="#FF333333"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style TargetType="{x:Type DataGridColumnHeader}">
+
+        <Setter Property="Background" Value="#FF394651"/>
+        <Setter Property="Foreground" Value="AliceBlue"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+
+    </Style>
+
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="Red" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="BorderDataGrid">
+
+        <Setter Property="BorderThickness" Value="0 0 0 2"/>
+        <Setter Property="BorderBrush" Value="AliceBlue"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="CornerRadius" Value="5"/>
+
+    </Style>
+
 </ResourceDictionary>
