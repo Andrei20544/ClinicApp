@@ -54,5 +54,11 @@ namespace ClinicApp
         {
 
         }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            PillsWindow pillsWindow = PillsWindow.GetInstance();
+            pillsWindow.Show();
+        }
     }
 }

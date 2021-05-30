@@ -60,7 +60,7 @@
                 <Button Style="{StaticResource MainBtn}"
                         Content="Учет медикаментов" Click="Button_Click_4"/>
                 <Button Style="{StaticResource MainBtn}"
-                        Content="Лекарства"/>
+                        Content="Лекарства" Click="Button_Click_5"/>
                 <Button Style="{StaticResource MainBtn}"
                         Content="Записи"/>
                 <Button Style="{StaticResource MainBtn}"

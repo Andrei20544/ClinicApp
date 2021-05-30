@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ClinicAppLogo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -78,6 +81,9 @@
     <Compile Include="Views\DoctorsWindows.xaml.cs">
       <DependentUpon>DoctorsWindows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PillsWindow.xaml.cs">
+      <DependentUpon>PillsWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DoctorsWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PillsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,6 +164,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\addPress.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\ClinicAppLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\ClinicAppLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ClinicAppLogo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
