@@ -37,6 +37,14 @@
 
         </Style>
 
+        <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockDataGrid">
+
+            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+
+        </Style>
+
         <Style TargetType="{x:Type Button}" x:Key="BTNDown" BasedOn="{StaticResource MainBtn}">
 
             <Setter Property="Width" Value="130"/>
@@ -46,10 +54,36 @@
 
         </Style>
 
-        <Style TargetType="DataGrid">
+        <Style TargetType="{x:Type DataGridRow}" x:Key="DataGridStyle">
 
+            <Setter Property="Foreground" Value="#FFB3B3B3"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template" Value="{DynamicResource DataGridRowControlTemplate1}"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FF262626"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FF383838"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FF333333"/>
+                </Trigger>
+            </Style.Triggers>
 
+        </Style>
 
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+
+            <Setter Property="Background" Value="#FF394651"/>
+            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+
+        </Style>
+
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="Red" />
         </Style>
 
     </Window.Resources>
@@ -65,7 +99,7 @@
         <Grid Grid.Row="0"
               Background="#FFAEAEAE">
 
-            <TextBlock Text="Clients"
+            <TextBlock Text="Препараты"
                        Margin="10 0 0 0"
                        FontSize="25"
                        Foreground="#FF818181"/>
@@ -102,7 +136,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Список клиентов"
+                <TextBlock Text="Список препаратов"
                            VerticalAlignment="Center"
                            Margin="10 0 0 0"
                            FontSize="25"
@@ -112,41 +146,56 @@
                       Margin="5">
 
                     <DataGrid BorderThickness="2"
-                          BorderBrush="Transparent"
-                          Name="GridClient"
-                          IsReadOnly="True"
-                          AutoGenerateColumns="False"
-                          FontSize="17"
-                          Background="White"
-                          Foreground="#FF6C6C6C" SelectionChanged="GridClient_SelectionChanged">
+                              BorderBrush="Transparent"
+                              Name="GridClient"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              FontSize="17"
+                              Background="#FF333F49"
+                              Foreground="#FF6C6C6C" 
+                              SelectionChanged="GridClient_SelectionChanged"
+                              RowStyle="{StaticResource DataGridStyle}"
+                              HorizontalAlignment="Center"
+                              RowHeaderWidth="0">
 
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn Header="Название"
+                            <DataGridTextColumn
                                         Binding="{Binding Path=name}"
-                                        Width="160"/>
+                                        Width="340">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Название"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Цена"
+                            <DataGridTextColumn
                                         Binding="{Binding Path=price}"
-                                            Width="160"/>
+                                        Width="160">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Цена"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Производитель"
+                            <DataGridTextColumn
                                         Binding="{Binding Path=manufacturer}"
-                                        Width="160"/>
+                                        Width="190">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Производитель"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Условие отпуска"
-                                        Binding="{Binding Path=condition}"/>
+                            <DataGridTextColumn Binding="{Binding Path=condition}"
+                                                Width="150">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Условие отпуска"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
 
                         </DataGrid.Columns>
-
-                        <DataGrid.RowDetailsTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Path=price}" />
-                                    <TextBlock Text=" рублей по скидке" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGrid.RowDetailsTemplate>
 
                     </DataGrid>
 
@@ -283,7 +332,8 @@
                 <TextBox x:Name="search"
                          Width="300"
                          Background="#FF232323"
-                         BorderBrush="#FF292929" TextChanged="search_TextChanged"/>
+                         BorderBrush="#FF3C3C3C" 
+                         TextChanged="search_TextChanged"/>
 
             </StackPanel>
 

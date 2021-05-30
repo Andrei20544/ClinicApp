@@ -180,5 +180,25 @@ namespace ClinicApp.Views
                 genderText.Text = selected.gender;
             }
         }
+
+        private void search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                List<Doctor> items = new List<Doctor>();
+                foreach (Doctor item in doctors)
+                {
+                    if (item.name.Contains(search.Text) || item.gender.Contains(search.Text) || item.middle_name.Contains(search.Text))
+                    {
+                        items.Add(item);
+                    }
+                }
+                GridDoctor.ItemsSource = items;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
