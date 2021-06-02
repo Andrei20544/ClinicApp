@@ -108,7 +108,8 @@
             <TextBlock Text="Доктора"
                        Margin="10 0 0 0"
                        FontSize="25"
-                       Foreground="#FF818181"/>
+                       Foreground="#FF818181"
+                       Style="{StaticResource Default}"/>
 
             <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
@@ -298,12 +299,18 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Bottom">
 
-                            <Button Style="{StaticResource BTNDown}"
-                                    Content="Добавить" Click="AddClick"/>
-                            <Button Style="{StaticResource BTNDown}"
-                                    Content="Изменить" Click="ChangeClick"/>
-                            <Button Style="{StaticResource BTNDown}"
-                                    Content="Удалить" Click="DeleteClick"/>
+                            <Button Style="{StaticResource BTNDown}" Click="AddClick">
+                                <TextBlock Text="Добавить"
+                                           Style="{StaticResource Default}"/>
+                            </Button>
+                            <Button Style="{StaticResource BTNDown}" Click="ChangeClick">
+                                <TextBlock Text="Изменить"
+                                           Style="{StaticResource Default}"/>
+                            </Button>
+                            <Button Style="{StaticResource BTNDown}" Click="DeleteClick">
+                                <TextBlock Text="Удалить"
+                                           Style="{StaticResource Default}"/>
+                            </Button>
 
                         </StackPanel>
 
@@ -333,7 +340,8 @@
                         Margin="10 0 0 0"
                         Grid.ColumnSpan="2">
 
-                <TextBlock Text="Поиск: "/>
+                <TextBlock Text="Поиск: "
+                           Style="{StaticResource Default}"/>
                 <TextBox x:Name="search"
                          Width="300"
                          Background="#FF232323"

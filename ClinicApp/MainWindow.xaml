@@ -12,6 +12,22 @@
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
         MouseDown="Window_MouseDown">
+    <Window.Resources>
+
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Default}">
+            
+            
+            
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+
+            <Setter Property="Foreground" Value="#FF293F51"/>
+            <Setter Property="FontSize" Value="28"/>
+
+        </Style>
+        
+    </Window.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
@@ -27,7 +43,8 @@
             <TextBlock Text="ClinicApp"
                        Margin="10 0 0 0"
                        FontSize="25"
-                       Foreground="#FF818181"/>
+                       Foreground="#FF818181"
+                       Style="{StaticResource Default}"/>
 
             <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
@@ -53,20 +70,34 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
 
-                <Button Style="{StaticResource MainBtn}"
-                        Content="Клиенты" Click="Button_Click_2"/>
-                <Button Style="{StaticResource MainBtn}"
-                        Content="Доктора" Click="Button_Click_3"/>
-                <Button Style="{StaticResource MainBtn}"
-                        Content="Учет медикаментов" Click="Button_Click_4"/>
-                <Button Style="{StaticResource MainBtn}"
-                        Content="Лекарства" Click="Button_Click_5"/>
-                <Button Style="{StaticResource MainBtn}"
-                        Content="Записи"/>
-                <Button Style="{StaticResource MainBtn}"
-                        Content="Расписание"/>
-                <Button Style="{StaticResource MainBtn}"
-                        Content="Услуги" Click="Button_Click_6"/>
+                <Button Style="{StaticResource MainBtn}" Click="Button_Click_2">
+                    <TextBlock Text="Клиенты"
+                               Style="{StaticResource Default}"/>
+                </Button>
+                <Button Style="{StaticResource MainBtn}" Click="Button_Click_3">
+                    <TextBlock Text="Доктора"
+                               Style="{StaticResource Default}"/>
+                </Button>
+                <Button Style="{StaticResource MainBtn}" Click="Button_Click_4">
+                    <TextBlock Text="Учет медикаментов"
+                               Style="{StaticResource Default}"/>
+                </Button>
+                <Button Style="{StaticResource MainBtn}" Click="Button_Click_5">
+                    <TextBlock Text="Лекарства"
+                               Style="{StaticResource Default}"/>
+                </Button>
+                <Button Style="{StaticResource MainBtn}">
+                    <TextBlock Text="Записи"
+                               Style="{StaticResource Default}"/>
+                </Button>
+                <Button Style="{StaticResource MainBtn}">
+                    <TextBlock Text="Расписание"
+                               Style="{StaticResource Default}"/>
+                </Button>
+                <Button Style="{StaticResource MainBtn}" Click="Button_Click_6">
+                    <TextBlock Text="Услуги"
+                               Style="{StaticResource Default}"/>
+                </Button>
 
             </StackPanel>
 

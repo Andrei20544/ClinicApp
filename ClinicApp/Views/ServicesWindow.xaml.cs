@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,27 @@ namespace ClinicApp.Views
 {
     public partial class ServicesWindow : Window
     {
-        private List<Services> services = new List<Services>();
+        private List<DopServices> services = new List<DopServices>();
         public ServicesWindow()
         {
             InitializeComponent();
 
+            SetComboBox();
             Update();
 
+        }
+
+        private void SetComboBox()
+        {
+            using (ModelBD model = new ModelBD())
+            {
+                var query = from p in model.Pills
+                            select p;
+                foreach (var item in query)
+                {
+                    idPillsText.Items.Add(item.name);
+                }
+            }
         }
 
         private void Update()
@@ -37,11 +52,20 @@ namespace ClinicApp.Views
                     GridClient.ItemsSource = null;
 
                     var querry = from s in model.Services
-                                 select s;
+                                 join p in model.Pills on s.id_pills equals p.id_pills
+                                 select new {
+                                     ID = s.id_service,
+                                     Name = s.name,
+                                     Name_Pills = p.name,
+                                     Limit_Age = s.limit_age,
+                                     Value = s.value,
+                                     Desc = s.description
+                                 };
 
                     foreach (var item in querry)
                     {
-                        services.Add(item);
+                        DopServices dopServices = new DopServices(item.ID, item.Name, item.Name_Pills, item.Limit_Age, item.Value, item.Desc);
+                        services.Add(dopServices);
                     }
 
                     GridClient.ItemsSource = services;
@@ -72,14 +96,16 @@ namespace ClinicApp.Views
         {
             try
             {
-                var selected = GridClient.SelectedItem as Services;
+                var selected = GridClient.SelectedItem as DopServices;
 
                 using (ModelBD model = new ModelBD())
                 {
+                    var Id_pills = model.Pills.Where(p => p.name.Equals(idPillsText.SelectedItem.ToString())).FirstOrDefault();
+
                     Services services = new Services
                     {
                         name = nameText.Text,
-                        id_pills = int.Parse(idPillsText.Text),
+                        id_pills = Id_pills.id_pills,
                         value = valueText.Text,
                         limit_age = int.Parse(limitText.Text),
                         description = descriptionText.Text
@@ -104,16 +130,18 @@ namespace ClinicApp.Views
         {
             try
             {
-                var selected = GridClient.SelectedItem as Services;
+                var selected = GridClient.SelectedItem as DopServices;
 
                 using (ModelBD model = new ModelBD())
                 {
-                    Services services = model.Services.Where(n => n.id_service.Equals(selected.id_service)).FirstOrDefault();
+                    var Id_pills = model.Pills.Where(p => p.name.Equals(idPillsText.SelectedItem.ToString())).FirstOrDefault();
+
+                    Services services = model.Services.Where(n => n.id_service.Equals(selected.ID)).FirstOrDefault();
                     services.name = nameText.Text;
                     services.limit_age = int.Parse(limitText.Text);
                     services.value = valueText.Text;
                     services.description = descriptionText.Text;
-                    services.id_pills = int.Parse(idPillsText.Text);
+                    services.id_pills = Id_pills.id_pills;
 
                     model.Entry(services).State = System.Data.Entity.EntityState.Modified;
                     model.SaveChanges();
@@ -134,13 +162,13 @@ namespace ClinicApp.Views
         {
             try
             {
-                var selected = GridClient.SelectedItem as Services;
+                var selected = GridClient.SelectedItem as DopServices;
 
                 using (ModelBD model = new ModelBD())
                 {
                     if (selected != null)
                     {
-                        Services services = model.Services.Where(n => n.id_service.Equals(selected.id_service)).FirstOrDefault();
+                        Services services = model.Services.Where(n => n.id_service.Equals(selected.ID)).FirstOrDefault();
                         model.Services.Remove(services);
                         model.SaveChanges();
 
@@ -161,10 +189,10 @@ namespace ClinicApp.Views
         {
             try
             {
-                List<Services> items = new List<Services>();
-                foreach (Services item in services)
+                List<DopServices> items = new List<DopServices>();
+                foreach (DopServices item in services)
                 {
-                    if (item.name.Contains(search.Text) || item.description.Contains(search.Text))
+                    if (item.NameServices.Contains(search.Text) || item.Description.Contains(search.Text))
                     {
                         items.Add(item);
                     }
@@ -190,13 +218,13 @@ namespace ClinicApp.Views
         {
             if (services.Count != 0)
             {
-                var selected = GridClient.SelectedItem as Services;
+                var selected = GridClient.SelectedItem as DopServices;
 
-                nameText.Text = selected.name;
-                limitText.Text = selected.limit_age.ToString();
-                valueText.Text = selected.value;
-                descriptionText.Text = selected.description;
-                idPillsText.Text = selected.id_pills.ToString();
+                nameText.Text = selected.NameServices;
+                limitText.Text = selected.LimitAge.ToString();
+                valueText.Text = selected.Value;
+                descriptionText.Text = selected.Description;
+                idPillsText.SelectedItem = selected.NamePills;
             }
         }
     }

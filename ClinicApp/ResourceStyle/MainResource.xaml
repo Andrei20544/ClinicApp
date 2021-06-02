@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:ClinicApp.ResourceStyle">
 
     <!--def-->
-    <Style TargetType="TextBlock">
+    <Style TargetType="TextBlock" x:Key="Default">
 
         <Setter Property="Foreground" Value="#FF344C61"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
