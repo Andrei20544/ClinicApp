@@ -12,21 +12,28 @@ namespace ClinicApp
         [Key]
         public int id_schedule { get; set; }
 
-        public DateTime? momday { get; set; }
+        [StringLength(20)]
+        public string momday { get; set; }
 
-        public DateTime? tuesday { get; set; }
+        [StringLength(20)]
+        public string tuesday { get; set; }
 
-        public DateTime? wednesday { get; set; }
+        [StringLength(20)]
+        public string wednesday { get; set; }
 
-        public DateTime? thursday { get; set; }
+        [StringLength(20)]
+        public string thursday { get; set; }
 
-        public DateTime? friday { get; set; }
+        [StringLength(20)]
+        public string friday { get; set; }
 
-        public DateTime? saturday { get; set; }
+        [StringLength(20)]
+        public string saturday { get; set; }
 
-        public DateTime? sunday { get; set; }
+        [StringLength(20)]
+        public string sunday { get; set; }
 
-        public int? id_doctor { get; set; }
+        public int id_doctor { get; set; }
 
         public virtual Doctor Doctor { get; set; }
     }

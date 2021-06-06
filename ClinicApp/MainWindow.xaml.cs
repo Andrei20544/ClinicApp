@@ -52,7 +52,8 @@ namespace ClinicApp
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-
+            MedConsWindow medConsWindow = new MedConsWindow();
+            medConsWindow.Show();
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
@@ -65,6 +66,12 @@ namespace ClinicApp
         {
             ServicesWindow servicesWindow = new ServicesWindow();
             servicesWindow.Show();
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Show();
         }
     }
 }

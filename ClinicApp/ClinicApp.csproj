@@ -75,6 +75,8 @@
     <Compile Include="Model\Register.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\Services.cs" />
+    <Compile Include="ViewModel\DopMedConsumption.cs" />
+    <Compile Include="ViewModel\DopRegister.cs" />
     <Compile Include="ViewModel\DopServices.cs" />
     <Compile Include="Views\Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
@@ -82,8 +84,14 @@
     <Compile Include="Views\DoctorsWindows.xaml.cs">
       <DependentUpon>DoctorsWindows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MedConsWindow.xaml.cs">
+      <DependentUpon>MedConsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PillsWindow.xaml.cs">
       <DependentUpon>PillsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterWindow.xaml.cs">
+      <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ServicesWindow.xaml.cs">
       <DependentUpon>ServicesWindow.xaml</DependentUpon>
@@ -112,7 +120,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MedConsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PillsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,5 +198,6 @@
   <ItemGroup>
     <Resource Include="ClinicAppLogo.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

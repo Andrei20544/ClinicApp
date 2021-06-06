@@ -14,9 +14,9 @@ namespace ClinicApp
 
         public int? cost { get; set; }
 
-        public int? id_pills { get; set; }
+        public int id_pills { get; set; }
 
-        public int? id_services { get; set; }
+        public int id_services { get; set; }
 
         public virtual Pills Pills { get; set; }
 

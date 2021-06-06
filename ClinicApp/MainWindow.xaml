@@ -86,7 +86,7 @@
                     <TextBlock Text="Лекарства"
                                Style="{StaticResource Default}"/>
                 </Button>
-                <Button Style="{StaticResource MainBtn}">
+                <Button Style="{StaticResource MainBtn}" Click="Button_Click_7">
                     <TextBlock Text="Записи"
                                Style="{StaticResource Default}"/>
                 </Button>

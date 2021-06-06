@@ -58,6 +58,11 @@ namespace ClinicApp
                 .Property(e => e.passport_data)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Client>()
+                .HasMany(e => e.Register)
+                .WithRequired(e => e.Client)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Doctor>()
                 .Property(e => e.name)
                 .IsUnicode(false);
@@ -78,6 +83,16 @@ namespace ClinicApp
                 .Property(e => e.gender)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Doctor>()
+                .HasMany(e => e.Register)
+                .WithRequired(e => e.Doctor)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Doctor>()
+                .HasMany(e => e.Schedule)
+                .WithRequired(e => e.Doctor)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Pills>()
                 .Property(e => e.name)
                 .IsUnicode(false);
@@ -88,6 +103,39 @@ namespace ClinicApp
 
             modelBuilder.Entity<Pills>()
                 .Property(e => e.condition)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Pills>()
+                .HasMany(e => e.Medication_consumption)
+                .WithRequired(e => e.Pills)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Schedule>()
+                .Property(e => e.momday)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Schedule>()
+                .Property(e => e.tuesday)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Schedule>()
+                .Property(e => e.wednesday)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Schedule>()
+                .Property(e => e.thursday)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Schedule>()
+                .Property(e => e.friday)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Schedule>()
+                .Property(e => e.saturday)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Schedule>()
+                .Property(e => e.sunday)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Services>()
@@ -104,8 +152,14 @@ namespace ClinicApp
 
             modelBuilder.Entity<Services>()
                 .HasMany(e => e.Medication_consumption)
-                .WithOptional(e => e.Services)
-                .HasForeignKey(e => e.id_services);
+                .WithRequired(e => e.Services)
+                .HasForeignKey(e => e.id_services)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Services>()
+                .HasMany(e => e.Register)
+                .WithRequired(e => e.Services)
+                .WillCascadeOnDelete(false);
         }
     }
 }

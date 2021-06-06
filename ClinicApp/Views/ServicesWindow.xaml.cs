@@ -187,6 +187,7 @@ namespace ClinicApp.Views
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            GridClient.SelectedItem = null;
             try
             {
                 List<DopServices> items = new List<DopServices>();

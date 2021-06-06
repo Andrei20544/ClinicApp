@@ -12,11 +12,11 @@ namespace ClinicApp
         [Key]
         public int id_register { get; set; }
 
-        public int? id_client { get; set; }
+        public int id_client { get; set; }
 
-        public int? id_service { get; set; }
+        public int id_service { get; set; }
 
-        public int? id_doctor { get; set; }
+        public int id_doctor { get; set; }
 
         public DateTime? date_register { get; set; }
 

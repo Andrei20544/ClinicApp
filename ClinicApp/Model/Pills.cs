@@ -19,6 +19,7 @@ namespace ClinicApp
 
         public int? price { get; set; }
 
+        [Required]
         [StringLength(30)]
         public string name { get; set; }
 

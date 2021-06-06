@@ -18,12 +18,15 @@ namespace ClinicApp
         [Key]
         public int id_client { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string name { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string surname { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string middle_name { get; set; }
 
@@ -38,12 +41,15 @@ namespace ClinicApp
         [StringLength(40)]
         public string email { get; set; }
 
-        [StringLength(50)]
+        [Required]
+        [StringLength(20)]
         public string type_policy { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string policy_number { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string passport_data { get; set; }
 

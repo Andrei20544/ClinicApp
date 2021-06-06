@@ -18,10 +18,11 @@ namespace ClinicApp
         [Key]
         public int id_service { get; set; }
 
-        public int? id_pills { get; set; }
+        public int id_pills { get; set; }
 
         public int? limit_age { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string name { get; set; }
 

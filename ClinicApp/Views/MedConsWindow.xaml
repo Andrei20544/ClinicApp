@@ -1,16 +1,16 @@
-﻿<Window x:Class="ClinicApp.Views.Clients"
+﻿<Window x:Class="ClinicApp.Views.MedConsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClinicApp.Views"
         mc:Ignorable="d"
-        Title="Clients" 
         Height="600" 
         Width="1280"
         WindowStyle="None" 
         ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" >
+        WindowStartupLocation="CenterScreen" 
+        MouseDown="Window_MouseDown">
     <Window.Resources>
 
         <Style x:Key="BachTextBlock" TargetType="{x:Type Label}" BasedOn="{x:Null}">
@@ -27,7 +27,7 @@
                     <Setter Property="Foreground" Value="#FFB2B2B2"/>
 
                 </Trigger>
-                
+
             </Style.Triggers>
 
         </Style>
@@ -64,7 +64,13 @@
 
         </Style>
 
-        
+        <Style TargetType="{x:Type ComboBoxItem}">
+
+            <Setter Property="Foreground" Value="#FF2C2C2C"/>
+
+        </Style>
+
+
     </Window.Resources>
     <Grid>
 
@@ -81,13 +87,13 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
 
-                <TextBlock Text="Клиенты"
-                       Margin="10 0 0 0"
-                       FontSize="25"
-                       Foreground="#FF818181"
+                <TextBlock Text="Записи"
+                           Margin="10 0 0 0"
+                           FontSize="25"
+                           Foreground="#FF818181"
                            Style="{StaticResource Default}"/>
 
-              
+
 
             </StackPanel>
 
@@ -123,7 +129,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Список клиентов"
+                <TextBlock Text="Список записей"
                            VerticalAlignment="Center"
                            Margin="10 0 0 0"
                            FontSize="25"
@@ -147,113 +153,47 @@
                         <DataGrid.Columns>
 
                             <DataGridTextColumn
-                                        Binding="{Binding Path=name}"
+                                        Binding="{Binding Path=QTY}"
                                         Width="160">
                                 <DataGridTextColumn.Header>
                                     <Border Style="{StaticResource BorderDataGrid}"
                                             Width="160">
-                                        <TextBlock Text="Имя"
+                                        <TextBlock Text="Количество"
                                                Style="{StaticResource TextBlockDataGrid}"/>
                                     </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
                             <DataGridTextColumn
-                                        Binding="{Binding Path=surname}"
+                                        Binding="{Binding Path=Cost}"
                                             Width="160">
                                 <DataGridTextColumn.Header>
                                     <Border Style="{StaticResource BorderDataGrid}"
                                             Width="160">
-                                        <TextBlock Text="Фамилия"
+                                        <TextBlock Text="Стоимость"
                                                Style="{StaticResource TextBlockDataGrid}"/>
                                     </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
                             <DataGridTextColumn
-                                        Binding="{Binding Path=middle_name}"
+                                        Binding="{Binding Path=Pill}"
                                         Width="160">
                                 <DataGridTextColumn.Header>
                                     <Border Style="{StaticResource BorderDataGrid}"
                                             Width="160">
-                                        <TextBlock Text="Отчество"
+                                        <TextBlock Text="Препарат"
                                                Style="{StaticResource TextBlockDataGrid}"/>
                                     </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
                             <DataGridTextColumn
-                                        Binding="{Binding Path=birthday}"
+                                        Binding="{Binding Path=Service}"
                                 Width="150">
                                 <DataGridTextColumn.Header>
                                     <Border Style="{StaticResource BorderDataGrid}">
-                                        <TextBlock Text="Дата рождения"
-                                               Style="{StaticResource TextBlockDataGrid}"/>
-                                    </Border>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn Binding="{Binding Path=gender}"
-                                                Width="150">
-                                <DataGridTextColumn.Header>
-                                    <Border Style="{StaticResource BorderDataGrid}">
-                                        <TextBlock Text="Гендер"
-                                               Style="{StaticResource TextBlockDataGrid}"/>
-                                    </Border>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn
-                                        Binding="{Binding Path=phone}"
-                                        Width="150">
-                                <DataGridTextColumn.Header>
-                                    <Border Style="{StaticResource BorderDataGrid}">
-                                        <TextBlock Text="Телефон"
-                                               Style="{StaticResource TextBlockDataGrid}"/>
-                                    </Border>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn
-                                        Binding="{Binding Path=email}"
-                                        Width="150">
-                                <DataGridTextColumn.Header>
-                                    <Border Style="{StaticResource BorderDataGrid}">
-                                        <TextBlock Text="E-mail"
-                                               Style="{StaticResource TextBlockDataGrid}"/>
-                                    </Border>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn
-                                        Binding="{Binding Path=type_policy}"
-                                        Width="150">
-                                <DataGridTextColumn.Header>
-                                    <Border Style="{StaticResource BorderDataGrid}">
-                                        <TextBlock Text="Тип полиса"
-                                               Style="{StaticResource TextBlockDataGrid}"/>
-                                    </Border>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn
-                                        Binding="{Binding Path=policy_number}"
-                                        Width="150">
-                                <DataGridTextColumn.Header>
-                                    <Border Style="{StaticResource BorderDataGrid}">
-                                        <TextBlock Text="Номер полиса"
-                                               Style="{StaticResource TextBlockDataGrid}"/>
-                                    </Border>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn
-                                        Binding="{Binding Path=passport_data}"
-                                        Width="190">
-                                <DataGridTextColumn.Header>
-                                    <Border Style="{StaticResource BorderDataGrid}"
-                                            Width="190">
-                                        <TextBlock Text="Паспортные данные"
+                                        <TextBlock Text="Услуга"
                                                Style="{StaticResource TextBlockDataGrid}"/>
                                     </Border>
                                 </DataGridTextColumn.Header>
@@ -291,92 +231,49 @@
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Имя"
+                            <TextBlock Text="Количество"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="nameText"
-                                     MaxLength="20"/>
+                            <TextBox x:Name="qtyText" TextChanged="qtyText_TextChanged"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Фамилия"
+                            <TextBlock Text="Стоимость"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="surnameText"
-                                     MaxLength="20"/>
+                            <TextBox x:Name="costText"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Отчество"
+                            <TextBlock Text="Препарат"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="middleNameText"
-                                     MaxLength="20"/>
+                            <!--<TextBox x:Name="limitText"/>-->
+                            <ComboBox Name="namePillsCombo"
+                                      Width="280"
+                                      Background="#FF2A3946"
+                                      BorderThickness="0" 
+                                      BorderBrush="Azure"
+                                      Foreground="#FFE6E6E6"
+                                      FontSize="16" SelectionChanged="namePillsCombo_SelectionChanged"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Дата Рождения"
+                            <TextBlock Text="Услуга"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="dateBirthText"/>
+                            <!--<TextBox x:Name="valueText"/>-->
+                            <ComboBox Name="nameServicesCombo"
+                                      Width="280"
+                                      Background="#FF2A3946"
+                                      BorderThickness="0" 
+                                      BorderBrush="Azure"
+                                      Foreground="#FFE6E6E6"
+                                      FontSize="16"/>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    Margin="0 10 0 0">
-                            <TextBlock Text="Гендер"
-                                       Style="{StaticResource Text}"/>
-                            <TextBox x:Name="genderText"
-                                     MaxLength="20"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    Margin="0 10 0 0">
-                            <TextBlock Text="Телефон"
-                                       Style="{StaticResource Text}"/>
-                            <TextBox x:Name="phoneText"
-                                     MaxLength="11"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    Margin="0 10 0 0">
-                            <TextBlock Text="E-mail"
-                                       Style="{StaticResource Text}"/>
-                            <TextBox x:Name="emailText"
-                                     MaxLength="40"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    Margin="0 10 0 0">
-                            <TextBlock Text="Тип полиса"
-                                       Style="{StaticResource Text}"/>
-                            <TextBox x:Name="policyTypeText"
-                                     MaxLength="20"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    Margin="0 10 0 0">
-                            <TextBlock Text="Номер полиса"
-                                       Style="{StaticResource Text}"/>
-                            <TextBox x:Name="policyNumText"
-                                     MaxLength="20"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    Margin="0 10 0 0">
-                            <TextBlock Text="Паспортные данные"
-                                       Style="{StaticResource Text}"/>
-                            <TextBox x:Name="passDataText"
-                                     MaxLength="20"/>
-                        </StackPanel>
-                        
                         <StackPanel Orientation="Horizontal"
                                     Margin="0 20 0 0"
                                     HorizontalAlignment="Center">
@@ -428,9 +325,9 @@
 
                     </StackPanel>
 
-                    
+
                 </ScrollViewer>
-                
+
             </Grid>
 
         </Grid>
