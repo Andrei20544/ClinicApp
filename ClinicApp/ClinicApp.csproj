@@ -67,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CheckingTextBox.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Medication_consumption.cs" />

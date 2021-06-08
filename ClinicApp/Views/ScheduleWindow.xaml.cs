@@ -10,12 +10,28 @@ namespace ClinicApp.Views
     public partial class ScheduleWindow : Window
     {
         private List<DopSchedule> schedule = new List<DopSchedule>();
+
+        private static ScheduleWindow instance;
         public ScheduleWindow()
         {
             InitializeComponent();
 
             SetComboBox();
             Update();
+        }
+
+        public static ScheduleWindow GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ScheduleWindow();
+            }
+            return instance;
+        }
+
+        public static void NullInst()
+        {
+            instance = null;
         }
 
         private void SetComboBox()

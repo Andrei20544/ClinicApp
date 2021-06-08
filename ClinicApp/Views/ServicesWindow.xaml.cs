@@ -18,6 +18,8 @@ namespace ClinicApp.Views
     public partial class ServicesWindow : Window
     {
         private List<DopServices> services = new List<DopServices>();
+
+        private static ServicesWindow instance;
         public ServicesWindow()
         {
             InitializeComponent();
@@ -25,6 +27,20 @@ namespace ClinicApp.Views
             SetComboBox();
             Update();
 
+        }
+
+        public static ServicesWindow GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ServicesWindow();
+            }
+            return instance;
+        }
+
+        public static void NullInst()
+        {
+            instance = null;
         }
 
         private void SetComboBox()

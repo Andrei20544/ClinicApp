@@ -17,12 +17,28 @@ namespace ClinicApp.Views
     public partial class Clients : Window
     {
         private List<Client> clients = new List<Client>();
+
+        private static Clients instance;
         public Clients()
         {
             InitializeComponent();
 
             Update();
 
+        }
+
+        public static Clients GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Clients();
+            }
+            return instance;
+        }
+
+        public static void NullInst()
+        {
+            instance = null;
         }
 
         private void Update()
@@ -230,6 +246,21 @@ namespace ClinicApp.Views
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void phoneText_KeyDown(object sender, KeyEventArgs e)
+        {
+            CheckingTextBox.CheckButtPress(e, false, true);
+        }
+
+        private void policyNumText_KeyDown(object sender, KeyEventArgs e)
+        {
+            CheckingTextBox.CheckButtPress(e, false, true);
+        }
+
+        private void passDataText_KeyDown(object sender, KeyEventArgs e)
+        {
+            CheckingTextBox.CheckButtPress(e, false, true);
         }
     }
 }

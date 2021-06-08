@@ -18,12 +18,28 @@ namespace ClinicApp.Views
     public partial class RegisterWindow : Window
     {
         private List<DopRegister> register = new List<DopRegister>();
+
+        private static RegisterWindow instance;
         public RegisterWindow()
         {
             InitializeComponent();
 
             SetComboBox();
             Update();
+        }
+
+        public static RegisterWindow GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new RegisterWindow();
+            }
+            return instance;
+        }
+
+        public static void NullInst()
+        {
+            instance = null;
         }
 
         private void SetComboBox()

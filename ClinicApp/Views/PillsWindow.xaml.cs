@@ -224,5 +224,10 @@ namespace ClinicApp.Views
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void priceText_KeyDown(object sender, KeyEventArgs e)
+        {
+            CheckingTextBox.CheckButtPress(e, false, true);
+        }
     }
 }

@@ -28,19 +28,19 @@ namespace ClinicApp
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Clients clients = new Clients();
+            Clients clients = Clients.GetInstance();
             clients.Show();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            DoctorsWindows doctorsWindows = new DoctorsWindows();
+            DoctorsWindows doctorsWindows = DoctorsWindows.GetInstance();
             doctorsWindows.Show();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            MedConsWindow medConsWindow = new MedConsWindow();
+            MedConsWindow medConsWindow = MedConsWindow.GetInstance();
             medConsWindow.Show();
         }
 
@@ -52,19 +52,19 @@ namespace ClinicApp
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            ServicesWindow servicesWindow = new ServicesWindow();
+            ServicesWindow servicesWindow = ServicesWindow.GetInstance();
             servicesWindow.Show();
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new RegisterWindow();
+            RegisterWindow registerWindow = RegisterWindow.GetInstance();
             registerWindow.Show();
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            ScheduleWindow scheduleWindow = new ScheduleWindow();
+            ScheduleWindow scheduleWindow = ScheduleWindow.GetInstance();
             scheduleWindow.Show();
         }
     }

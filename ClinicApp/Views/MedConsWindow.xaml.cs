@@ -18,12 +18,28 @@ namespace ClinicApp.Views
     public partial class MedConsWindow : Window
     {
         private List<DopMedConsumption> medConsumptions = new List<DopMedConsumption>();
+
+        private static MedConsWindow instance;
         public MedConsWindow()
         {
             InitializeComponent();
 
             Update();
             SetComboBox();
+        }
+
+        public static MedConsWindow GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new MedConsWindow();
+            }
+            return instance;
+        }
+
+        public static void NullInst()
+        {
+            instance = null;
         }
 
         private void SetComboBox()
@@ -291,6 +307,16 @@ namespace ClinicApp.Views
         private void namePillsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComputingCost();
+        }
+
+        private void qtyText_KeyDown(object sender, KeyEventArgs e)
+        {
+            CheckingTextBox.CheckButtPress(e, false, true);
+        }
+
+        private void costText_KeyDown(object sender, KeyEventArgs e)
+        {
+            CheckingTextBox.CheckButtPress(e, false, true);
         }
     }
 }

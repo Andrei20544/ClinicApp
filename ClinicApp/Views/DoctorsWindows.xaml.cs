@@ -17,12 +17,28 @@ namespace ClinicApp.Views
     public partial class DoctorsWindows : Window
     {
         private List<Doctor> doctors = new List<Doctor>();
+
+        private static DoctorsWindows instance;
         public DoctorsWindows()
         {
             InitializeComponent();
 
             Update();
 
+        }
+
+        public static DoctorsWindows GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new DoctorsWindows();
+            }
+            return instance;
+        }
+
+        public static void NullInst()
+        {
+            instance = null;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

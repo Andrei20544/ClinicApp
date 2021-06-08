@@ -338,7 +338,7 @@
                             <TextBlock Text="Телефон"
                                        Style="{StaticResource Text}"/>
                             <TextBox x:Name="phoneText"
-                                     MaxLength="11"/>
+                                     MaxLength="11" KeyDown="phoneText_KeyDown"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
@@ -365,7 +365,7 @@
                             <TextBlock Text="Номер полиса"
                                        Style="{StaticResource Text}"/>
                             <TextBox x:Name="policyNumText"
-                                     MaxLength="20"/>
+                                     MaxLength="20" KeyDown="policyNumText_KeyDown"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
@@ -374,7 +374,7 @@
                             <TextBlock Text="Паспортные данные"
                                        Style="{StaticResource Text}"/>
                             <TextBox x:Name="passDataText"
-                                     MaxLength="20"/>
+                                     MaxLength="20" KeyDown="passDataText_KeyDown"/>
                         </StackPanel>
                         
                         <StackPanel Orientation="Horizontal"

@@ -87,7 +87,7 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
 
-                <TextBlock Text="Записи"
+                <TextBlock Text="Расписание"
                            Margin="10 0 0 0"
                            FontSize="25"
                            Foreground="#FF818181"
@@ -129,7 +129,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Список записей"
+                <TextBlock Text="Список расписаний"
                            VerticalAlignment="Center"
                            Margin="10 0 0 0"
                            FontSize="25"
