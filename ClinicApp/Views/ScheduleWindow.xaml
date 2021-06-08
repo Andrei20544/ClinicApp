@@ -335,7 +335,7 @@
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Доктор"
+                            <TextBlock Text="Доктор *"
                                        Style="{StaticResource Text}"/>
                             <!--<TextBox x:Name="valueText"/>-->
                             <ComboBox Name="nameDoctorCombo"

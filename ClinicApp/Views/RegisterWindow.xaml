@@ -230,7 +230,7 @@
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Имя клиента"
+                            <TextBlock Text="Имя клиента *"
                                        Style="{StaticResource Text}"/>
                             <!--<TextBox x:Name="nameText"/>-->
                             <ComboBox Name="nameClientsCombo"
@@ -245,7 +245,7 @@
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Название услуги"
+                            <TextBlock Text="Название услуги *"
                                        Style="{StaticResource Text}"/>
                             <!--<TextBox x:Name="idPillsText"/>-->
                             <ComboBox Name="nameServicesCombo"
@@ -261,7 +261,7 @@
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Имя доктора"
+                            <TextBlock Text="Имя доктора *"
                                        Style="{StaticResource Text}"/>
                             <!--<TextBox x:Name="limitText"/>-->
                             <ComboBox Name="nameDoctorCombo"

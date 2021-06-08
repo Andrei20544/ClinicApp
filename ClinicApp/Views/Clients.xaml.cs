@@ -81,7 +81,14 @@ namespace ClinicApp.Views
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            try
+            {
+                this.DragMove();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void GridClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
