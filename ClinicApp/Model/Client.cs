@@ -2,9 +2,11 @@ namespace ClinicApp
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Runtime.CompilerServices;
 
     [Table("Client")]
     public partial class Client
@@ -54,6 +56,6 @@ namespace ClinicApp
         public string passport_data { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Register> Register { get; set; }
+        public virtual ICollection<Register> Register { get; set; }        
     }
 }

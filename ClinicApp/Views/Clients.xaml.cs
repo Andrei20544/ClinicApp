@@ -72,18 +72,28 @@ namespace ClinicApp.Views
         {
             if (clients.Count != 0)
             {
-                var selected = GridClient.SelectedItem as Client;
+                try
+                {
+                    var selected = GridClient.SelectedItem as Client;
 
-                nameText.Text = selected.name;
-                surnameText.Text = selected.surname;
-                middleNameText.Text = selected.middle_name;
-                dateBirthText.Text = selected.birthday.ToString();
-                genderText.Text = selected.gender;
-                phoneText.Text = selected.phone;
-                emailText.Text = selected.email;
-                policyTypeText.Text = selected.type_policy;
-                policyNumText.Text = selected.policy_number;
-                passDataText.Text = selected.passport_data;
+                    if (selected != null)
+                    {
+                        nameText.Text = selected.name;
+                        surnameText.Text = selected.surname;
+                        middleNameText.Text = selected.middle_name;
+                        dateBirthText.Text = selected.birthday.ToString();
+                        genderText.Text = selected.gender;
+                        phoneText.Text = selected.phone;
+                        emailText.Text = selected.email;
+                        policyTypeText.Text = selected.type_policy;
+                        policyNumText.Text = selected.policy_number;
+                        passDataText.Text = selected.passport_data;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -202,6 +212,8 @@ namespace ClinicApp.Views
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearTextBox();
+            GridClient.SelectedItem = null;
             try
             {
                 List<Client> items = new List<Client>();

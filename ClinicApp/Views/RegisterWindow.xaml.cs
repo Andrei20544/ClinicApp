@@ -219,6 +219,7 @@ namespace ClinicApp.Views
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearTextBox();
             GridClient.SelectedItem = null;
             try
             {
@@ -252,7 +253,7 @@ namespace ClinicApp.Views
             {
                 var selected = GridClient.SelectedItem as DopRegister;
 
-                if (nameClientsCombo.SelectedItem != null)
+                if (selected != null)
                 {
                     try
                     {

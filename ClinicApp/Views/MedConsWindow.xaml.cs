@@ -215,11 +215,13 @@ namespace ClinicApp.Views
 
                 try
                 {
-                    namePillsCombo.SelectedItem = selected.Pill + "(id: " + selected.IDPill + " )";
-                    nameServicesCombo.SelectedItem = selected.Service + "(id: " + selected.IDService + " )";
-                    qtyText.Text = selected.QTY.ToString();
-                    costText.Text = selected.Cost.ToString();
-
+                    if (selected != null)
+                    {
+                        namePillsCombo.SelectedItem = selected.Pill + "(id: " + selected.IDPill + " )";
+                        nameServicesCombo.SelectedItem = selected.Service + "(id: " + selected.IDService + " )";
+                        qtyText.Text = selected.QTY.ToString();
+                        costText.Text = selected.Cost.ToString();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -230,6 +232,7 @@ namespace ClinicApp.Views
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearTextBox();
             GridClient.SelectedItem = null;
             try
             {
@@ -251,10 +254,10 @@ namespace ClinicApp.Views
 
         private void ClearTextBox()
         {
-            //nameClientsCombo.SelectedItem = null;
-            //nameDoctorCombo.SelectedItem = null;
-            //nameServicesCombo.SelectedItem = null;
-            //Date.SelectedDate = null;
+            namePillsCombo.SelectedItem = null;
+            nameServicesCombo.SelectedItem = null;
+            qtyText.Text = "";
+            costText.Text = "";
         }
 
         private void ComputingCost()

@@ -187,6 +187,7 @@ namespace ClinicApp.Views
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearTextBox();
             GridClient.SelectedItem = null;
             try
             {
@@ -219,13 +220,23 @@ namespace ClinicApp.Views
         {
             if (services.Count != 0)
             {
-                var selected = GridClient.SelectedItem as DopServices;
+                try
+                {
+                    var selected = GridClient.SelectedItem as DopServices;
 
-                nameText.Text = selected.NameServices;
-                limitText.Text = selected.LimitAge.ToString();
-                valueText.Text = selected.Value;
-                descriptionText.Text = selected.Description;
-                idPillsText.SelectedItem = selected.NamePills;
+                    if (selected != null)
+                    {
+                        nameText.Text = selected.NameServices;
+                        limitText.Text = selected.LimitAge.ToString();
+                        valueText.Text = selected.Value;
+                        descriptionText.Text = selected.Description;
+                        idPillsText.SelectedItem = selected.NamePills;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

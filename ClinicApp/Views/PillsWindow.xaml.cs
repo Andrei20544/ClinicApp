@@ -173,12 +173,22 @@ namespace ClinicApp.Views
         {
             if (_pills_list.Count != 0)
             {
-                var selected = GridClient.SelectedItem as Pills;
+                try
+                {
+                    var selected = GridClient.SelectedItem as Pills;
 
-                nameText.Text = selected.name;
-                priceText.Text = selected.price.ToString();
-                manufacturerText.Text = selected.manufacturer;
-                conditionText.Text = selected.condition;
+                    if (selected != null)
+                    {
+                        nameText.Text = selected.name;
+                        priceText.Text = selected.price.ToString();
+                        manufacturerText.Text = selected.manufacturer;
+                        conditionText.Text = selected.condition;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -195,6 +205,8 @@ namespace ClinicApp.Views
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearTextBox();
+            GridClient.SelectedItem = null;
             try
             {
                 List<Pills> items = new List<Pills>();

@@ -171,18 +171,30 @@ namespace ClinicApp.Views
         {
             if (doctors.Count != 0)
             {
-                var selected = GridDoctor.SelectedItem as Doctor;
+                try
+                {
+                    var selected = GridDoctor.SelectedItem as Doctor;
 
-                nameText.Text = selected.name;
-                surnameText.Text = selected.surname;
-                middleNameText.Text = selected.middle_name;
-                roleText.Text = selected.role;
-                genderText.Text = selected.gender;
+                   if (selected != null)
+                    {
+                        nameText.Text = selected.name;
+                        surnameText.Text = selected.surname;
+                        middleNameText.Text = selected.middle_name;
+                        roleText.Text = selected.role;
+                        genderText.Text = selected.gender;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearTextBox();
+            GridDoctor.SelectedItem = null;
             try
             {
                 List<Doctor> items = new List<Doctor>();

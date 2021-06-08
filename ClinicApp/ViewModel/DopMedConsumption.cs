@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace ClinicApp.ViewModel
 {
     public class DopMedConsumption
     {
+
         public int ID { get; set; }
         public int? QTY { get; set; }
         public int? Cost { get; set; }
