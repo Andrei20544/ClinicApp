@@ -9,8 +9,9 @@
         Height="600" 
         Width="1280"
         WindowStyle="None" 
-        ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" >
+        WindowStartupLocation="CenterScreen" 
+        MouseDown="Window_MouseDown"
+        BorderThickness="0">
     <Window.Resources>
 
         <Style x:Key="BachTextBlock" TargetType="{x:Type Label}" BasedOn="{x:Null}">
