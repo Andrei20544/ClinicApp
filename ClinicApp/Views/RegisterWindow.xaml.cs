@@ -291,5 +291,11 @@ namespace ClinicApp.Views
         {
             this.DragMove();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AttendanceWindow attendanceWindow = new AttendanceWindow();
+            attendanceWindow.Show();
+        }
     }
 }

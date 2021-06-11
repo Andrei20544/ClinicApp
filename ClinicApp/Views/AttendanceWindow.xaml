@@ -1,18 +1,35 @@
-﻿<Window x:Class="ClinicApp.Views.PillsWindow"
+﻿<Window x:Class="ClinicApp.Views.AttendanceWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClinicApp.Views"
         mc:Ignorable="d"
-        Title="PillsWindow" 
-        Height="600" 
-        Width="1280"
+        Height="500" 
+        Width="1080"
         WindowStyle="None" 
         ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" 
-        MouseDown="Window_MouseDown">
+        WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Window.Resources>
+
+        <Style x:Key="BachTextBlock" TargetType="{x:Type Label}" BasedOn="{x:Null}">
+
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="AliceBlue"/>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver" Value="true">
+
+                    <Setter Property="Foreground" Value="#FFB2B2B2"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
 
         <Style TargetType="TextBox">
 
@@ -37,14 +54,6 @@
 
         </Style>
 
-        <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockDataGrid">
-
-            <Setter Property="Foreground" Value="AliceBlue"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-
-        </Style>
-
         <Style TargetType="{x:Type Button}" x:Key="BTNDown" BasedOn="{StaticResource MainBtn}">
 
             <Setter Property="Width" Value="130"/>
@@ -54,37 +63,12 @@
 
         </Style>
 
-        <Style TargetType="{x:Type DataGridRow}" x:Key="DataGridStyle">
+        <Style TargetType="{x:Type ComboBoxItem}">
 
-            <Setter Property="Foreground" Value="#FFB3B3B3"/>
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Setter Property="Template" Value="{DynamicResource DataGridRowControlTemplate1}"/>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#FF262626"/>
-                </Trigger>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                    <Setter Property="Background" Value="#FF383838"/>
-                </Trigger>
-                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="#FF333333"/>
-                </Trigger>
-            </Style.Triggers>
+            <Setter Property="Foreground" Value="#FF2C2C2C"/>
 
         </Style>
 
-        <Style TargetType="{x:Type DataGridColumnHeader}">
-
-            <Setter Property="Background" Value="#FF394651"/>
-            <Setter Property="Foreground" Value="AliceBlue"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-
-        </Style>
-
-        <Style TargetType="ScrollBar">
-            <Setter Property="Background" Value="Red" />
-        </Style>
 
     </Window.Resources>
     <Grid>
@@ -99,11 +83,18 @@
         <Grid Grid.Row="0"
               Background="#FFAEAEAE">
 
-            <TextBlock Text="Медикаменты"
-                       Margin="10 0 0 0"
-                       FontSize="25"
-                       Foreground="#FF818181"
-                       Style="{StaticResource Default}"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+
+                <TextBlock Text="Наряд на посещение"
+                           Margin="10 0 0 0"
+                           FontSize="25"
+                           Foreground="#FF818181"
+                           Style="{StaticResource Default}"/>
+
+
+
+            </StackPanel>
 
             <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
@@ -137,7 +128,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Список медикаментов"
+                <TextBlock Text="Список"
                            VerticalAlignment="Center"
                            Margin="10 0 0 0"
                            FontSize="25"
@@ -154,45 +145,45 @@
                               FontSize="17"
                               Background="#FF333F49"
                               Foreground="#FF6C6C6C" 
-                              SelectionChanged="GridClient_SelectionChanged"
                               RowStyle="{StaticResource DataGridStyle}"
-                              HorizontalAlignment="Center"
+                              SelectionChanged="GridClient_SelectionChanged"
                               RowHeaderWidth="0">
 
                         <DataGrid.Columns>
 
                             <DataGridTextColumn
-                                        Binding="{Binding Path=name}"
-                                        Width="240">
-                                <DataGridTextColumn.Header>
-                                    <TextBlock Text="Название"
-                                               Style="{StaticResource TextBlockDataGrid}"/>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn
-                                        Binding="{Binding Path=price}"
+                                        Binding="{Binding Path=NameClient}"
                                         Width="160">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Цена"
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="Имя клиента"
                                                Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
                             <DataGridTextColumn
-                                        Binding="{Binding Path=manufacturer}"
-                                        Width="190">
+                                        Binding="{Binding Path=NameService}"
+                                            Width="160">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Производитель"
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="Название услуги"
                                                Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Binding="{Binding Path=condition}"
-                                                Width="150">
+                            <DataGridTextColumn
+                                        Binding="{Binding Path=Itogo}"
+                                        Width="160">
                                 <DataGridTextColumn.Header>
-                                    <TextBlock Text="Условие отпуска"
+                                    <Border Style="{StaticResource BorderDataGrid}"
+                                            Width="160">
+                                        <TextBlock Text="Итого"
                                                Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
@@ -228,82 +219,47 @@
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Название *"
+                            <TextBlock Text="Имя клиента"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="nameText"/>
+                            <TextBox x:Name="nameClientText"/>
+                            <!--<ComboBox Name="nameClientsCombo"
+                                      Width="280"
+                                      Background="#FF2A3946"
+                                      BorderThickness="0" 
+                                      BorderBrush="Azure"
+                                      Foreground="#FFE6E6E6"
+                                      FontSize="16"/>-->
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Цена"
+                            <TextBlock Text="Название услуги"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="priceText" KeyDown="priceText_KeyDown"/>
+                            <TextBox x:Name="nameServiceText"/>
+                            <!--<ComboBox Name="nameServicesCombo"
+                                      Width="280"
+                                      Background="#FF2A3946"
+                                      BorderThickness="0" 
+                                      BorderBrush="Azure"
+                                      Foreground="#FFE6E6E6"
+                                      FontSize="16">-->
+                            <!--</ComboBox>-->
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0 10 0 0">
-                            <TextBlock Text="Производитель"
+                            <TextBlock Text="Итого"
                                        Style="{StaticResource Text}"/>
-                            <TextBox x:Name="manufacturerText"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    Margin="0 10 0 0">
-                            <TextBlock Text="Условие отпуска"
-                                       Style="{StaticResource Text}"/>
-                            <TextBox x:Name="conditionText"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="0 20 0 0"
-                                    HorizontalAlignment="Center">
-
-                            <Button Style="{StaticResource BTNDown}" 
-                                    Click="AddClick">
-                                <StackPanel Orientation="Horizontal"
-                                            HorizontalAlignment="Center">
-
-                                    <Image Source="/Resource/add.png"
-                                           Height="28"
-                                           VerticalAlignment="Center"
-                                           Margin="0 0 5 0"/>
-                                    <TextBlock Text="Добавить"
-                                               Style="{StaticResource Default}"/>
-
-                                </StackPanel>
-                            </Button>
-                            <Button Style="{StaticResource BTNDown}" 
-                                    Click="ChangeClick">
-                                <StackPanel Orientation="Horizontal"
-                                            HorizontalAlignment="Center">
-
-                                    <Image Source="/Resource/save.png"
-                                           Height="28"
-                                           VerticalAlignment="Center"
-                                           Margin="0 0 5 0"/>
-                                    <TextBlock Text="Изменить"
-                                               Style="{StaticResource Default}"/>
-
-                                </StackPanel>
-                            </Button>
-                            <Button Style="{StaticResource BTNDown}"
-                                    Click="DeleteClick">
-                                <StackPanel Orientation="Horizontal"
-                                            HorizontalAlignment="Center">
-
-                                    <Image Source="/Resource/remove.png"
-                                           Height="28"
-                                           VerticalAlignment="Center"
-                                           Margin="0 0 5 0"/>
-                                    <TextBlock Text="Удалить"
-                                               Style="{StaticResource Default}"/>
-
-                                </StackPanel>
-                            </Button>
-
+                            <TextBox x:Name="itogText"/>
+                            <!--<ComboBox Name="nameDoctorCombo"
+                                      Width="280"
+                                      Background="#FF2A3946"
+                                      BorderThickness="0" 
+                                      BorderBrush="Azure"
+                                      Foreground="#FFE6E6E6"
+                                      FontSize="16"/>-->
                         </StackPanel>
 
                     </StackPanel>

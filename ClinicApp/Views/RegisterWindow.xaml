@@ -370,6 +370,14 @@
                          BorderBrush="#FF3C3C3C" 
                          TextChanged="search_TextChanged"/>
 
+                <Button Margin="10 0 0 0"
+                        Style="{StaticResource BTNDown}"
+                        Width="180"
+                        Height="32" Click="Button_Click_2">
+                    <TextBlock Style="{StaticResource Default}"
+                               Text="Наряд на посещение"/>
+                </Button>
+
             </StackPanel>
 
         </Grid>

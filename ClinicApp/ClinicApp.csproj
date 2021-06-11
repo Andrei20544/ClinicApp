@@ -76,10 +76,14 @@
     <Compile Include="Model\Register.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\Services.cs" />
+    <Compile Include="ViewModel\DopAttendance.cs" />
     <Compile Include="ViewModel\DopMedConsumption.cs" />
     <Compile Include="ViewModel\DopRegister.cs" />
     <Compile Include="ViewModel\DopSchedule.cs" />
     <Compile Include="ViewModel\DopServices.cs" />
+    <Compile Include="Views\AttendanceWindow.xaml.cs">
+      <DependentUpon>AttendanceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
     </Compile>
@@ -114,6 +118,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ResourceStyle\MainResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AttendanceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
