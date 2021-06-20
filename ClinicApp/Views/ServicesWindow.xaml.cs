@@ -75,12 +75,13 @@ namespace ClinicApp.Views
                                      Name_Pills = p.name,
                                      Limit_Age = s.limit_age,
                                      Value = s.value,
-                                     Desc = s.description
+                                     Desc = s.description,
+                                     qtyPills = s.qty_pills
                                  };
 
                     foreach (var item in querry)
                     {
-                        DopServices dopServices = new DopServices(item.ID, item.Name, item.Name_Pills, item.Limit_Age, item.Value, item.Desc);
+                        DopServices dopServices = new DopServices(item.ID, item.Name, item.Name_Pills, item.Limit_Age, item.Value, item.Desc, item.qtyPills);
                         services.Add(dopServices);
                     }
 
@@ -125,7 +126,8 @@ namespace ClinicApp.Views
                         id_pills = Id_pills.id_pills,
                         value = valueText.Text,
                         limit_age = int.Parse(limitText.Text),
-                        description = descriptionText.Text
+                        description = descriptionText.Text,
+                        qty_pills = int.Parse(qtyPills.Text)
                     };
 
                     model.Services.Add(services);
@@ -159,6 +161,7 @@ namespace ClinicApp.Views
                     services.value = valueText.Text;
                     services.description = descriptionText.Text;
                     services.id_pills = Id_pills.id_pills;
+                    services.qty_pills = int.Parse(qtyPills.Text);
 
                     model.Entry(services).State = System.Data.Entity.EntityState.Modified;
                     model.SaveChanges();
@@ -248,6 +251,7 @@ namespace ClinicApp.Views
                         valueText.Text = selected.Value;
                         descriptionText.Text = selected.Description;
                         idPillsText.SelectedItem = selected.NamePills;
+                        qtyPills.Text = selected.QtyPills.ToString();
                     }
                 }
                 catch(Exception ex)

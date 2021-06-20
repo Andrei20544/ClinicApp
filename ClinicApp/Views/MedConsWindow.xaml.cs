@@ -91,12 +91,13 @@ namespace ClinicApp.Views
                                      cost = m.cost,
                                      qty = m.qty,
                                      idService = s.id_service,
-                                     idPill = p.id_pills
+                                     idPill = p.id_pills,
+                                     Date = m.date
                                  };
 
                     foreach (var item in querry)
                     {
-                        DopMedConsumption dopMedConsumption = new DopMedConsumption(item.id, item.qty, item.cost, item.pillName, item.serviceName, item.idService, item.idPill);
+                        DopMedConsumption dopMedConsumption = new DopMedConsumption(item.id, item.qty, item.cost, item.pillName, item.serviceName, item.idService, item.idPill, item.Date);
                         medConsumptions.Add(dopMedConsumption);
                     }
 
@@ -127,7 +128,8 @@ namespace ClinicApp.Views
                         id_pills = pill.id_pills,
                         id_services = service.id_service,
                         cost = int.Parse(costText.Text),
-                        qty = int.Parse(qtyText.Text)
+                        qty = int.Parse(qtyText.Text),
+                        date = Date.DisplayDate
                     };
 
                     model.Medication_consumption.Add(medication_);
@@ -165,6 +167,7 @@ namespace ClinicApp.Views
                     medication.id_services = service.id_service;
                     medication.qty = int.Parse(qtyText.Text);
                     medication.cost = int.Parse(costText.Text);
+                    medication.date = Date.DisplayDate;
 
                     model.Entry(medication).State = System.Data.Entity.EntityState.Modified;
                     model.SaveChanges();
@@ -238,6 +241,7 @@ namespace ClinicApp.Views
                         nameServicesCombo.SelectedItem = selected.Service + "(id: " + selected.IDService + " )";
                         qtyText.Text = selected.QTY.ToString();
                         costText.Text = selected.Cost.ToString();
+                        Date.SelectedDate = selected.Date;
                     }
                 }
                 catch (Exception ex)
@@ -275,6 +279,7 @@ namespace ClinicApp.Views
             nameServicesCombo.SelectedItem = null;
             qtyText.Text = "";
             costText.Text = "";
+            Date.SelectedDate = null;
         }
 
         private void ComputingCost()

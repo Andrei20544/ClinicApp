@@ -132,24 +132,61 @@ namespace ClinicApp.Views
                 using (ModelBD model = new ModelBD())
                 {
                     var policyNum = nameClientsCombo.SelectedItem.ToString().Split('(')[1].Split(')')[0].Replace(" ", "");
-                    var DoctorID = nameDoctorCombo.SelectedItem.ToString().Split(':')[1].Split(')')[0].Replace(" ", "");
-                    var ServiceID = nameServicesCombo.SelectedItem.ToString().Split(':')[1].Split(')')[0].Replace(" ", "");
-                    //error
 
+                    var DoctorID = int.Parse(nameDoctorCombo.SelectedItem.ToString().Split(':')[1].Split(')')[0].Replace(" ", ""));
+                    var ServiceID = int.Parse(nameServicesCombo.SelectedItem.ToString().Split(':')[1].Split(')')[0].Replace(" ", ""));
                     var Id_client = model.Client.Where(p => p.policy_number.Equals(policyNum)).FirstOrDefault();
+                    var service= model.Services.Where(p => p.id_service.Equals(ServiceID)).FirstOrDefault();
 
-                    Register register = new Register
+                    var price_pills = model.Pills.Where(p => p.id_pills.Equals(service.id_pills)).FirstOrDefault().price.ToString();
+
+                    var qty = int.Parse(service.qty_pills.ToString());                  
+
+                    Pills pills = model.Pills.Where(n => n.id_pills.Equals(service.id_pills)).FirstOrDefault();
+                    pills.name = pills.name;
+                    pills.price = pills.price;
+                    pills.manufacturer = pills.manufacturer;
+                    pills.condition = pills.condition;
+
+                    var qty_old = pills.qty;
+
+                    pills.qty = qty_old - qty;
+
+                    if (qty_old == 0)
                     {
-                        id_client = Id_client.id_client,
-                        id_doctor = int.Parse(DoctorID),
-                        id_service = int.Parse(ServiceID),
-                        date_register = Date.SelectedDate
-                    };
+                        MessageBox.Show("Препарата для данной услуги нет в наличии");
+                    }
+                    else
+                    {
+                        Medication_consumption medication = new Medication_consumption
+                        {
+                            id_pills = service.id_pills,
+                            id_services = ServiceID,
+                            cost = int.Parse(price_pills) * qty,
+                            qty = qty,
+                            date = DateTime.Parse(Date.SelectedDate.ToString())
+                        };
 
-                    model.Register.Add(register);
-                    model.SaveChanges();
 
-                    MessageBox.Show("Запись успешно добавлен");
+                        Register register = new Register
+                        {
+                            id_client = Id_client.id_client,
+                            id_doctor = DoctorID,
+                            id_service = ServiceID,
+                            date_register = Date.SelectedDate
+                        };
+
+                        model.Register.Add(register);
+
+                        MessageBox.Show($"Запись на {Date.SelectedDate} успешно добавлена");
+
+                        model.Medication_consumption.Add(medication);
+
+                        MessageBox.Show($"В таблице 'Учет медикаментов появилась новая запись на {Date.SelectedDate} число'");
+
+                        model.Entry(pills).State = System.Data.Entity.EntityState.Modified;
+                        model.SaveChanges();
+                    }                 
 
                     Update();
 

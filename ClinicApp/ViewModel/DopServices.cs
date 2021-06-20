@@ -14,8 +14,9 @@ namespace ClinicApp.ViewModel
         public int? LimitAge { get; set; }
         public string Value { get; set; }
         public string Description { get; set; }
+        public int? QtyPills { get; set; }
 
-        public DopServices(int iD, string nameServices, string namePills, int? limitAge, string value, string description)
+        public DopServices(int iD, string nameServices, string namePills, int? limitAge, string value, string description, int? qtyPills)
         {
             ID = iD;
             NameServices = nameServices;
@@ -23,6 +24,7 @@ namespace ClinicApp.ViewModel
             LimitAge = limitAge;
             Value = value;
             Description = description;
+            QtyPills = qtyPills;
         }
     }
 }

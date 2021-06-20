@@ -209,6 +209,16 @@
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
+                            <DataGridTextColumn Binding="{Binding Path=QtyPills}"
+                                                Width="150">
+                                <DataGridTextColumn.Header>
+                                    <Border Style="{StaticResource BorderDataGrid}">
+                                        <TextBlock Text="Количество"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                    </Border>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -276,6 +286,14 @@
                             <TextBlock Text="Функ. значения"
                                        Style="{StaticResource Text}"/>
                             <TextBox x:Name="valueText"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0 10 0 0">
+                            <TextBlock Text="Количество"
+                                       Style="{StaticResource Text}"/>
+                            <TextBox x:Name="qtyPills"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"

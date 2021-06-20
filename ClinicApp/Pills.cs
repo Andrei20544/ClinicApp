@@ -29,6 +29,8 @@ namespace ClinicApp
         [StringLength(20)]
         public string condition { get; set; }
 
+        public int? qty { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medication_consumption> Medication_consumption { get; set; }
     }

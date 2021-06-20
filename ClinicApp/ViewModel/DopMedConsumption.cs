@@ -17,8 +17,9 @@ namespace ClinicApp.ViewModel
         public string Service { get; set; }
         public int IDService { get; set; }
         public int IDPill { get; set; }
+        public DateTime Date { get; set; }
 
-        public DopMedConsumption(int iD, int? qTY, int? cost, string pill, string service, int iDService, int iDPill)
+        public DopMedConsumption(int iD, int? qTY, int? cost, string pill, string service, int iDService, int iDPill, DateTime date)
         {
             ID = iD;
             QTY = qTY;
@@ -27,6 +28,7 @@ namespace ClinicApp.ViewModel
             Service = service;
             IDService = iDService;
             IDPill = iDPill;
+            Date = date;
         }
     }
 }

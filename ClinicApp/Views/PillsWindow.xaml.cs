@@ -122,6 +122,7 @@ namespace ClinicApp.Views
                     pills.price = int.Parse(priceText.Text);
                     pills.manufacturer = manufacturerText.Text;
                     pills.condition = conditionText.Text;
+                    pills.qty = int.Parse(qtyText.Text);
 
                     model.Entry(pills).State = System.Data.Entity.EntityState.Modified;
                     model.SaveChanges();
@@ -151,7 +152,8 @@ namespace ClinicApp.Views
                         name = nameText.Text,
                         price = int.Parse(priceText.Text),
                         manufacturer = manufacturerText.Text,
-                        condition = conditionText.Text
+                        condition = conditionText.Text,
+                        qty = int.Parse(qtyText.Text)
                     };
 
                     model.Pills.Add(pills);
@@ -183,6 +185,7 @@ namespace ClinicApp.Views
                         priceText.Text = selected.price.ToString();
                         manufacturerText.Text = selected.manufacturer;
                         conditionText.Text = selected.condition;
+                        qtyText.Text = selected.qty.ToString();
                     }
                 }
                 catch(Exception ex)

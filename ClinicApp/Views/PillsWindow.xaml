@@ -196,6 +196,14 @@
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
 
+                            <DataGridTextColumn Binding="{Binding Path=qty}"
+                                                Width="150">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock Text="Количество"
+                                               Style="{StaticResource TextBlockDataGrid}"/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -255,6 +263,14 @@
                             <TextBlock Text="Условие отпуска"
                                        Style="{StaticResource Text}"/>
                             <TextBox x:Name="conditionText"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0 10 0 0">
+                            <TextBlock Text="Количество"
+                                       Style="{StaticResource Text}"/>
+                            <TextBox x:Name="qtyText"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"

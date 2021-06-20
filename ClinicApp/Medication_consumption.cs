@@ -10,13 +10,15 @@ namespace ClinicApp
     {
         public int id { get; set; }
 
-        public int? qty { get; set; }
+        public int qty { get; set; }
 
-        public int? cost { get; set; }
+        public int cost { get; set; }
 
         public int id_pills { get; set; }
 
         public int id_services { get; set; }
+
+        public DateTime date { get; set; }
 
         public virtual Pills Pills { get; set; }
 
